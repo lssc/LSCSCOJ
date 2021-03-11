@@ -32,7 +32,6 @@
     "body-parser": "^1.15.2",
     "buffer-crc32": "^0.2.13",
     "cheerio": "^1.0.0-rc.1",
-    "command-line-args": "^5.1.0",
     "cookie-parser": "^1.4.4",
     "cssfilter": "0.0.10",
     "deepcopy": "^2.0.0",

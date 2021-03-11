@@ -3,14 +3,9 @@ const fs = require('fs'),
       util = require('util'),
       http = require('http'),
       serializejs = require('serialize-javascript'),
-      UUID = require('uuid'),
-      commandLineArgs = require('command-line-args');
+      UUID = require('uuid');
 
-const optionDefinitions = [
-  { name: 'config', alias: 'c', type: String, defaultValue: __dirname + '/config.json' },
-];
-
-const options = commandLineArgs(optionDefinitions);
+const config = __dirname + '/config/web.json';
 
 require('reflect-metadata');
 
@@ -25,9 +20,9 @@ Promise.config({
 
 global.syzoj = {
   rootDir: __dirname,
-  config: require('object-assign-deep')({}, require('./config-example.json'), require(options.config)),
+  config: require('object-assign-deep')({}, require('./config-example.json'), require(config)),
   languages: require('./language-config.json'),
-  configDir: options.config,
+  configDir: config,
   models: [],
   modules: [],
   db: null,
@@ -37,7 +32,7 @@ global.syzoj = {
     console.log(obj);
   },
   checkMigratedToTypeORM() {
-    const userConfig = require(options.config);
+    const userConfig = require(config);
     if (!userConfig.db.migrated_to_typeorm) {
       app.use((req, res) => res.send('Please refer to <a href="https://github.com/syzoj/syzoj/wiki/TypeORM-%E8%BF%81%E7%A7%BB%E6%8C%87%E5%8D%97">TypeORM Migration Guide</a>.'));
       app.listen(parseInt(syzoj.config.port), syzoj.config.hostname);
@@ -134,7 +129,7 @@ global.syzoj = {
   },
   restart() {
     console.log('Will now fork a new process.');
-    const child = require('child_process').fork(__filename, ['-c', options.config]);
+    const child = require('child_process').fork(__filename, ['-c', config]);
     child.on('message', (message) => {
       if (message !== 'quit') return;
 

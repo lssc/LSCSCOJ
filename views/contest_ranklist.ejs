@@ -13,10 +13,10 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>用户名</th>
+                <th>用戶名</th>
                 <% if (contest.type === 'acm') { %>
-                  <th>通过数量</th>
-                  <th>罚时</th>
+                  <th>通過數量</th>
+                  <th>罰時</th>
                 <% } %>
                 <% for (let i = 0; i < problems.length; i++) { %>
                 <th>
@@ -26,7 +26,7 @@
                 </th>
                 <% } %>
                 <% if (contest.type === 'noi' || contest.type === 'ioi') { %>
-                  <th>总分</th>
+                  <th>總分</th>
                 <% } %>
             </tr>
             </thead>
@@ -160,7 +160,7 @@
 <div class="ui placeholder segment" style="margin-top: 0px; ">
   <div class="ui icon header">
     <i class="ui file icon" style="margin-bottom: 20px; "></i>
-    暂无选手提交
+    暫無選手提交
   </div>
 </div>
 <% } %>

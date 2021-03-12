@@ -1,4 +1,4 @@
-<% this.title = '重设密码';  %>
+<% this.title = '重設密碼'; %>
 <% include header %>
 <div class="ui message" id="msgBox" hidden>
     <p id="msgContent"></p>
@@ -8,7 +8,7 @@
     <div class="column" style="max-width: 450px">
       <h2 class="ui image header">
         <div class="content">
-          重设密码
+          重設密碼
         </div>
       </h2>
       <form class="ui large form" id="resetForm">
@@ -16,16 +16,16 @@
             <div class="field">
                 <div class="ui left icon input">
                     <i class="lock icon"></i>
-                    <input type="password" placeholder="密码" id="password1">
+                    <input type="password" placeholder="密碼" id="password1">
                 </div>
             </div>
             <div class="field">
                 <div class="ui left icon input">
                     <i class="undo icon"></i>
-                    <input type="password" placeholder="确认密码" id="password2">
+                    <input type="password" placeholder="確認密碼" id="password2">
                 </div>
             </div>
-            <button type="submit" class="ui fluid large submit button" id="resetPassword">重设</div>
+            <button type="submit" class="ui fluid large submit button" id="resetPassword">重設</div>
         </div>
       </form>
     </div>
@@ -40,7 +40,7 @@ function showMessage(mclass, content) {
 }
 function submitForm() {
     if ($("#password1").val() != $("#password2").val()) {
-        showMessage("两次输入的密码不一致");
+        showMessage("兩次輸入的密碼不一致");
         return;
     }
     password = md5($("#password1").val() + "syzoj2_xxx");
@@ -57,15 +57,15 @@ function submitForm() {
             error_code = data.error_code;
             switch (error_code) {
                 case 1:
-                    showMessage("positive", "密码重置成功。");
+                    showMessage("positive", "密碼重置成功。");
                     break;
                 default:
-                    showMessage("error", "未知错误 " + error_code);
+                    showMessage("error", "未知錯誤 " + error_code);
                     break;
             }
             $("#resetPassword").removeClass("loading");
         },
-        error:  function(XMLHttpRequest, textStatus, errorThrown) {
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
             alert(XMLHttpRequest.responseText);
         }
     });

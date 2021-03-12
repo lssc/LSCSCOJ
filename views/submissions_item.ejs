@@ -102,16 +102,16 @@ Vue.component('submission-item', {
   <td><a :href="userLink">{{ data.info.user }}</a></td>
   <td>{{ data.info.submitTime }}</td>
   <td v-if="showRejudge">
-    <a id="rejudge-button" :onclick="'check_rejudge(' + (statusString === 'Waiting' || statusString.startsWith('Running')).toString() + ')'" style="color: #000; " href="#"><i class="repeat icon"></i></a>
+    <a id="rejudge-button" :onclick="'check_rejudge(' + (statusString === 'Waiting' || statusString.startsWith('Running')).toString() + ')'" style="color : #000; " href="#"><i class="repeat icon"></i></a>
     <% if (active === 'submission') { %>
     <div class="ui basic modal" id="modal-rejudge">
       <div class="ui icon header">
         <i class="retweet icon"></i>
-        <p style="margin-top: 15px; ">重新评测</p>
+        <p style="margin-top: 15px; ">重新評測</p>
       </div>
       <div class="content" style="text-align: center; ">
-        <p>确认重新评测该提交记录吗？</p>
-        <p id="warning_pending"><strong>警告：只有管理员可以重新评测一个未评测完成的记录，<br>这种情况一般发生在评测服务中断后，如果一个提交正在被评测，<br>则将其重新评测会导致系统错乱！</strong></p>
+        <p>確認重新評測該提交記錄嗎？ </p>
+        <p id="warning_pending"><strong>警告：只有管理員可以重新評測一個未評測完成的記錄，<br>這種情況一般發生在評測服務中斷後，如果一個提交正在被評測，<br>則將其重新評測會導致系統錯亂！ </strong></p>
       </div>
       <div class="actions">
         <div class="ui red basic cancel inverted button">

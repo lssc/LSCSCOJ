@@ -1,30 +1,30 @@
-<% this.title = '注册' %>
+<% this.title = '註冊' %>
 <% include header %>
 <div class="padding">
-  <h1>注册</h1>
+  <h1>註冊</h1>
   <div class="ui error message" id="error" data-am-alert hidden>
     <p id="error_info"></p>
   </div>
           <form class="ui form">
                 <div class="field">
-                    <label for="username">用户名</label>
+                    <label for="username">用戶名</label>
                     <input type="text" placeholder="" id="username">
                 </div>
                 <div class="field">
-                    <label for="email">邮箱</label>
+                    <label for="email">郵箱</label>
                     <input type="email" placeholder="" id="email">
                 </div>
                 <div class="two fields">
                     <div class="field">
-                    <label class="ui header">密码</label>
+                    <label class="ui header">密碼</label>
                       <input type="password" placeholder="" id="password1">
                     </div>
                     <div class="field">
-                      <label class="ui header">确认密码</label>
+                      <label class="ui header">確認密碼</label>
                       <input type="password" placeholder="" id="password2">
                     </div>
                 </div>
-                <a id="sign_up" class="ui button" href="javascript:submit();">注册</a>
+                <a id="sign_up" class="ui button" href="javascript:submit();">註冊</a>
             </form>
 </div>
 <script src="<%- lib('blueimp-md5/2.10.0/js/md5.min.js') %>"></script>
@@ -35,12 +35,12 @@ function show_error(error) {
 }
 
 function success() {
-    alert("注册成功！");
+    alert("註冊成功！");
     window.location.href = location.protocol + '//' + location.host + <%- serializejs(req.query.url || '/') %>;
 }
 
 function mail_required() {
-    alert("注册确认邮件已经发送到您的邮箱的垃圾箱，点击邮件内的链接即可完成注册。");
+    alert("註冊確認郵件已經發送到您的郵箱的垃圾箱，點擊郵件內的鏈接即可完成註冊。");
     var s = $("#email").val();
     var mailWebsite = 'https://mail.' + s.substring(s.indexOf('@') + 1, s.length);
     if (mailWebsite === 'https://mail.gmail.com') mailWebsite = 'https://mail.google.com';
@@ -49,7 +49,7 @@ function mail_required() {
 
 function submit() {
     if ($("#password1").val() != $("#password2").val()) {
-        show_error("两次输入的密码不一致");
+        show_error("兩次輸入的密碼不一致");
         return;
     }
     password = md5($("#password1").val() + "syzoj2_xxx")
@@ -68,28 +68,28 @@ function submit() {
             error_code = data.error_code;
             switch(error_code){
                 case 2001:
-                    show_error("服务器未收到数据");
+                    show_error("服務器未收到數據");
                     break;
                 case 2005:
                 case 2002:
-                    show_error("用户名需要大于 3 个字符小于 16 个字符，仅允许字母数字和下划线");
+                    show_error("用戶名需要大於 3 個字符小於 16 個字符，僅允許字母數字和下劃線");
                     break;
                 case 2007:
                 case 2003:
-                    show_error("密码不得为空");
+                    show_error("密碼不得為空");
                     break;
                 case 2004:
                 case 2006:
-                    show_error("请输入正确的邮箱");
+                    show_error("請輸入正確的郵箱");
                     break;
                 case 2008:
-                    show_error("已经有人用过这个用户名了");
+                    show_error("已經有人用過這個用戶名了");
                     break;
                 case 2009:
-                    show_error("邮箱地址已被占用");
+                    show_error("郵箱地址已被佔用");
                     break;
                 case 2010:
-                    show_error("验证邮件发送失败：\n" + data.message);
+                    show_error("驗證郵件發送失敗：\n" + data.message);
                     break;
                 case 1:
                     success();
@@ -98,14 +98,14 @@ function submit() {
                     mail_required();
                     break;
                 default:
-                    show_error("未知错误：" + JSON.stringify(data));
+                    show_error("未知錯誤：" + JSON.stringify(data));
                     break;
             }
             $("#sign_up").removeClass("loading");
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {
             alert(XMLHttpRequest.responseText);
-            show_error("未知错误");
+            show_error("未知錯誤");
             $("#sign_up").removeClass("loading");
         }
     });

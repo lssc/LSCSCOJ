@@ -1,4 +1,4 @@
-<% this.title = show_user.username + ' - 用户'; %>
+<% this.title = show_user.username + ' - 用戶'; %>
 <% include header %>
 <style>
 #avatar_container:before {
@@ -17,7 +17,7 @@
                     <div class="ui dimmer transition hidden">
                         <div class="content">
                             <div class="center">
-                                <a class="ui inverted button" href="<%= syzoj.utils.makeUrl(['user', show_user.id, 'edit']) %>"><i class="edit icon"></i>修改资料</a>
+                                <a class="ui inverted button" href="<%= syzoj.utils.makeUrl(['user', show_user.id, 'edit']) %>"><i class="edit icon"></ i>修改資料</a>
                             </div>
                         </div>
                     </div>
@@ -25,14 +25,14 @@
                     <img style="margin-top: -100%; " src="<%= syzoj.utils.gravatar(show_user.email, 1000) %>">
                 </div>
                 <div class="content">
-                    <div class="header"><%= show_user.username %><% if (show_user.nameplate) { %><%- show_user.nameplate %><% } %> <% if (show_user.sex == 1) { %><i class="man icon"></i><% } else if (show_user.sex == -1) { %><i class="woman icon"></i><% } %></div>
+                    <div class="header"><%= show_user.username %><% if (show_user.nameplate) { %><%- show_user.nameplate %><% } %> <% if (show_user.sex == 1 ) { %><i class="man icon"></i><% } else if (show_user.sex == -1) { %><i class="woman icon"></i><% } %></div>
                     <div class="meta">
-                        <a class="group"><%= show_user.is_admin ? '管理员' : '普通用户' %></a>
+                        <a class="group"><%= show_user.is_admin ? '管理員' : '普通用戶' %></a>
                     </div>
                 </div>
                 <div class="extra content">
-                    <a><i class="check icon"></i>通过 <%= show_user.ac_problems.length %> 题</a>
-                    <a style="float: right; "><i class="star icon"></i>积分 <%= show_user.rating %></a>
+                    <a><i class="check icon"></i>通過 <%= show_user.ac_problems.length %> 題</a>
+                    <a style="float: right; "><i class="star icon"></i>積分 <%= show_user.rating %></a>
                 </div>
             </div>
 
@@ -46,7 +46,7 @@
                                 <div class="ui grid">
                                     <div class="row">
                                         <div class="column">
-                                           <h4 class="ui top attached block header">用户名</h4>
+                                           <h4 class="ui top attached block header">用戶名</h4>
                                            <div class="ui bottom attached segment"><%= show_user.username %><% if (show_user.nameplate) { %><%- show_user.nameplate %><% } %></div>
                                         </div>
                                     </div>
@@ -60,13 +60,13 @@
                                     <% } %>
                                     <div class="row">
                                         <div class="column">
-                                            <h4 class="ui top attached block header">个性签名</h4>
+                                            <h4 class="ui top attached block header">個性簽名</h4>
                                             <div class="ui bottom attached segment" class="font-content"><%- show_user.information %></div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="column">
-                                            <h4 class="ui top attached block header">注册于</h4>
+                                            <h4 class="ui top attached block header">註冊於</h4>
                                             <div class="ui bottom attached segment" class="font-content">
                                                 <%= syzoj.utils.formatDate(show_user.register_time) %>
                                             </div>
@@ -74,7 +74,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="column">
-                                            <h4 class="ui top attached block header">通过的题目</h4>
+                                            <h4 class="ui top attached block header">通過的題目</h4>
                                             <div class="ui bottom attached segment">
                                                 <% for (let problem of show_user.ac_problems) { %>
                                                     <a href="<%= syzoj.utils.makeUrl(['problem', problem]) %>"><%= problem %></a>
@@ -84,58 +84,42 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="eight wide column">
-                                <div class="ui grid">
-                                  <div class="row">
-                                      <div class="column">
-                                          <h4 class="ui top attached block header">统计</h4>
-                                          <div class="ui bottom attached segment">
-                                            <div id="pie_chart_legend"></div>
-                                            <div style="width: 260px; height: 260px; margin-left: 33.5px; "><canvas style="width: 260px; height: 260px; " id="pie_chart"></canvas></div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
                 <div class="row">
                     <div class="column">
                         <h4 class="ui top attached block header">帖子</h4>
                         <div class="ui bottom attached <% if (!show_user.articles.length) { %>center aligned <% } %>segment">
-													  <% if (!show_user.articles.length) { %>该用户从未发表帖子<% } else { %>
+<% if (!show_user.articles.length) { %>該用戶從未發表帖子<% } else { %>
                             <table class="ui very basic table">
                                 <thead>
                                     <tr>
-                                        <th>标题</th>
-                                        <th>时间</th>
+                                        <th>標題</th>
+                                        <th>時間</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <% for (let article of show_user.articles) { %>
                                     <tr>
-																			  <td><a href="<%= syzoj.utils.makeUrl(['article', article.id]) %>"><%= article.title %></a></td>
+<td><a href="<%= syzoj.utils.makeUrl(['article', article.id]) %>"><%= article.title %></a></td>
                                         <td><%= syzoj.utils.formatDate(article.public_time) %></td>
                                     </tr>
                                     <% } %>
                                 </tbody>
                             </table>
-													  <% } %>
+<% } %>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="column">
-                        <h4 class="ui top attached block header">比赛</h4>
+                        <h4 class="ui top attached block header">比賽</h4>
                         <div class="ui bottom attached segment">
                             <table class="ui very basic table">
                                 <thead>
                                     <tr>
-                                        <th>比赛</th>
+                                        <th>比賽</th>
                                         <th>名次</th>
-                                        <th>积分</th>
+                                        <th>積分</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -143,8 +127,8 @@
                                     <tr>
                                         <td><%= history.contestName %></td>
                                         <td><%= history.rank != null ? history.rank + " / " + history.participants : '' %></td>
-                                        <td><%= history.value %> 
-                                            <% if(history.delta != null) { %> 
+                                        <td><%= history.value %>
+                                            <% if(history.delta != null) { %>
                                                 <span class="<%= history.delta >= 0 ? 'rating_up' : 'rating_down' %>">
                                                 (<%= (history.delta < 0 ? '' : '+') + history.delta %>)
                                             <% } %>

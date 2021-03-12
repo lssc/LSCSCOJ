@@ -1,13 +1,13 @@
 <%
-this.title = '统计';
+this.title = '統計';
 let types = {
   fastest: problem.type === 'submit-answer' ? null : '最快',
   slowest: problem.type === 'submit-answer' ? null : '最慢',
   shortest: problem.type === 'submit-answer' ? '最小' : '最短',
-  longest: problem.type === 'submit-answer' ? '最大' : '最长',
+  longest: problem.type === 'submit-answer' ? '最大' : '最長',
   earliest: '最早',
-  min: problem.type === 'submit-answer' ? null : '最小内存',
-  max: problem.type === 'submit-answer' ? null : '最大内存'
+  min: problem.type === 'submit-answer' ? null : '最小內存',
+  max: problem.type === 'submit-answer' ? null : '最大內存'
 };
 %>
 <% include header %>
@@ -32,7 +32,7 @@ function getColorOfScore(score) {
 </script>
 <div class="padding">
   <h1 style="text-align: center; margin-bottom: 30px; ">
-    满分提交
+    滿分提交
     <span class="ui header" style="margin-left: 10px; ">
       <div class="ui compact menu">
         <div class="ui simple dropdown item">
@@ -41,7 +41,7 @@ function getColorOfScore(score) {
           <div class="menu">
             <% for (let type in types) { %>
               <% if (type !== statistics.type && types[type] !== null) { %>
-                <a class="item" href="<%= syzoj.utils.makeUrl(['problem', problem.id, 'statistics', type]) %>"><%= types[type] %></a>
+                <a class="item" href="<%= syzoj.utils.makeUrl(['problem', problem.id, 'statistics', type]) %>"><%= types[type] %></ a>
               <% } %>
             <% } %>
           </div>
@@ -52,27 +52,27 @@ function getColorOfScore(score) {
   <table class="ui very basic center aligned table" style="white-space: nowrap; ">
     <thead>
       <tr>
-          <th>编号</th>
-          <th>题目</th>
-          <th>状态</th>
-          <th>分数</th>
+          <th>編號</th>
+          <th>題目</th>
+          <th>狀態</th>
+          <th>分數</th>
           <% if (problem.type !== 'submit-answer') { %>
-            <th>总时间</th>
-            <th>内存</th>
-            <th>代码</th>
+            <th>總時間</th>
+            <th>內存</th>
+            <th>代碼</th>
           <% } else { %>
             <th>答案文件</th>
           <% } %>
           <th>提交者</th>
-          <th>提交时间</th>
+          <th>提交時間</th>
       </tr>
     </thead>
     <tbody>
       <% for (let judge of statistics.judge_state) { %>
           <% include util %>
           <tr>
-              <td><a href="<%= syzoj.utils.makeUrl(['submission', judge.id]) %>"><b>#<%= judge.id %></b></a></td>
-              <td><a href="<%= syzoj.utils.makeUrl(['problem', judge.problem_id]) %>"><b>#<%= judge.problem_id %>.</b> <%= judge.problem.title %></a></td>
+              <td><a href="<%= syzoj.utils.makeUrl(['submission', judge.id]) %>"><b>#<%= judge.id %></b></a ></td>
+              <td><a href="<%= syzoj.utils.makeUrl(['problem', judge.problem_id]) %>"><b>#<%= judge.problem_id %>.</b> <% = judge.problem.title %></a></td>
               <td><a href="<%= syzoj.utils.makeUrl(['submission', judge.id]) %>">
                   <b>
                   <span class="status <%= getStatusMeta(judge.status).toLowerCase().split(' ').join('_') %>">
@@ -81,15 +81,15 @@ function getColorOfScore(score) {
                   </span>
                   </b>
               </a></td>
-              <td><a href="<%= syzoj.utils.makeUrl(['submission', judge.id]) %>"><span class="score score_<%= parseInt(judge.score / 10) || 0 %>"><%= judge.score %></span></a></td>
+              <td><a href="<%= syzoj.utils.makeUrl(['submission', judge.id]) %>"><span class="score score_<%= parseInt(judge.score / 10) | | 0 %>"><%= judge.score %></span></a></td>
               <% if (problem.type !== 'submit-answer') { %>
                 <td><%= judge.total_time %> ms</td>
                 <td><%= parseInt(judge.max_memory) || 0 %> K</td>
-                <td><a href="<%= syzoj.utils.makeUrl(['submission', judge.id]) %>"><b><%= syzoj.languages[judge.language].show %></b></a> / <%= syzoj.utils.formatSize(judge.code.length) %></td>
+                <td><a href="<%= syzoj.utils.makeUrl(['submission', judge.id]) %>"><b><%= syzoj.languages[judge.language].show %>< /b></a> / <%= syzoj.utils.formatSize(judge.code.length) %></td>
               <% } else { %>
                 <td><%= syzoj.utils.formatSize(judge.max_memory) %></td>
               <% } %>
-              <td><a href="<%= syzoj.utils.makeUrl(['user', judge.user_id]) %>"><%= judge.user.username %></a><% if (judge.user.nameplate) { %><%- judge.user.nameplate %><% } %></td>
+              <td><a href="<%= syzoj.utils.makeUrl(['user', judge.user_id]) %>"><%= judge.user.username %></a><% if (judge .user.nameplate) { %><%- judge.user.nameplate %><% } %></td>
               <td><%= syzoj.utils.formatDate(judge.submit_time) %></td>
           </tr>
       <% } %>
@@ -99,28 +99,28 @@ function getColorOfScore(score) {
   <% include page %>
   <br>
   <h1 style="text-align: center; ">
-    得分分布
+    得分分佈
   </h1>
   <div id="score-distribution-chart" style="height: 250px;"></div>
   <script type="text/javascript">
   new Morris.Bar({
-  	element: 'score-distribution-chart',
-  	data: <%- serializejs(statistics.scoreDistribution) %>,
-  	barColors: function(r, s, type) {
-  		return getColorOfScore(r.label);
-  	},
-  	xkey: 'score',
-  	ykeys: ['count'],
-  	labels: ['number'],
-  	hoverCallback: function(index, options, content, row) {
-  		var scr = row.score;
-  		return '<div class="morris-hover-row-label">分数：' + scr + '</div><div class="morris-hover-point">数量：' + row.count + '</div>';
-  	},
-  	resize: true
+  element: 'score-distribution-chart',
+  data: <%- serializejs(statistics.scoreDistribution) %>,
+  barColors: function(r, s, type) {
+  return getColorOfScore(r.label);
+  },
+  xkey: 'score',
+  ykeys: ['count'],
+  labels: ['number'],
+  hoverCallback: function(index, options, content, row) {
+  var scr = row.score;
+  return '<div class="morris-hover-row-label">分數：' + scr + '</div><div class="morris-hover-point">數量：' + row.count + '</ div>';
+  },
+  resize: true
   });
   </script>
   <h1 style="text-align: center; ">
-    前缀和
+    前綴和
   </h1>
   <div id="score-distribution-chart-pre" style="height: 250px;"></div>
   <script type="text/javascript">
@@ -130,29 +130,29 @@ function getColorOfScore(score) {
   }
   %>
   new Morris.Line({
-  	element: 'score-distribution-chart-pre',
+  element: 'score-distribution-chart-pre',
     data: <%- serializejs(statistics.prefixSum) %>,
-  	xkey: 'score',
-  	ykeys: ['count'],
-  	labels: ['number'],
-  	lineColors: function(row, sidx, type) {
-  		if (type == 'line') {
-  			return '#0b62a4';
-  		}
-  		return getColorOfScore(row.src.score / 100);
-  	},
-  	xLabelFormat: function(x) {
-  		return (x.getTime() / 100).toString();
-  	},
-  	hoverCallback: function(index, options, content, row) {
-  		var scr = row.score / 100;
-      return '<div class="morris-hover-row-label">分数：≤ ' + scr + '</div><div class="morris-hover-point">数量：' + row.count + '</div>';
-  	},
-  	resize: true
+  xkey: 'score',
+  ykeys: ['count'],
+  labels: ['number'],
+  lineColors: function(row, sidx, type) {
+  if (type == 'line') {
+  return '#0b62a4';
+  }
+  return getColorOfScore(row.src.score / 100);
+  },
+  xLabelFormat: function(x) {
+  return (x.getTime() / 100).toString();
+  },
+  hoverCallback: function(index, options, content, row) {
+  var scr = row.score / 100;
+      return '<div class="morris-hover-row-label">分數：≤ ' + scr + '</div><div class="morris-hover-point">數量：' + row.count + '< /div>';
+  },
+  resize: true
   });
   </script>
   <h1 style="text-align: center; ">
-    后缀和
+    後綴和
   </h1>
   <div id="score-distribution-chart-suf" style="height: 250px;"></div>
   <script type="text/javascript">
@@ -162,25 +162,25 @@ function getColorOfScore(score) {
   }
   %>
   new Morris.Line({
-  	element: 'score-distribution-chart-suf',
+  element: 'score-distribution-chart-suf',
     data: <%- serializejs(statistics.suffixSum) %>,
-  	xkey: 'score',
-  	ykeys: ['count'],
-  	labels: ['number'],
-  	lineColors: function(row, sidx, type) {
-  		if (type == 'line') {
-  			return '#0b62a4';
-  		}
-  		return getColorOfScore(row.src.score / 100);
-  	},
-  	xLabelFormat: function(x) {
-  		return (x.getTime() / 100).toString();
-  	},
-  	hoverCallback: function(index, options, content, row) {
-  		var scr = row.score / 100;
-      return '<div class="morris-hover-row-label">分数：≥ ' + scr + '</div><div class="morris-hover-point">数量：' + row.count + '</div>';
-  	},
-  	resize: true
+  xkey: 'score',
+  ykeys: ['count'],
+  labels: ['number'],
+  lineColors: function(row, sidx, type) {
+  if (type == 'line') {
+  return '#0b62a4';
+  }
+  return getColorOfScore(row.src.score / 100);
+  },
+  xLabelFormat: function(x) {
+  return (x.getTime() / 100).toString();
+  },
+  hoverCallback: function(index, options, content, row) {
+  var scr = row.score / 100;
+      return '<div class="morris-hover-row-label">分數：≥ ' + scr + '</div><div class="morris-hover-point">數量：' + row.count + '< /div>';
+  },
+  resize: true
   });
   </script>
 </div>

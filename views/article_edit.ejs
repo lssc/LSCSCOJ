@@ -1,4 +1,4 @@
-<% this.title = article.id ? '编辑帖子' : '发表帖子'; %>
+<% this.title = article.id ? '編輯帖子' : '發表帖子'; %>
 <% include header %>
 <style type="text/css">
     .am-panel-title{
@@ -8,17 +8,17 @@
 <div class="padding">
   <form class="" method="post">
     <div class="ui top attached tabular menu">
-      <a class="item active" data-tab="edit">编辑</a>
-      <a class="item" data-tab="preview" id="preview_tab">预览</a>
+      <a class="item active" data-tab="edit">編輯</a>
+      <a class="item" data-tab="preview" id="preview_tab">預覽</a>
     </div>
     <div class="ui bottom attached tab segment active" data-tab="edit">
       <div class="ui form">
         <div class="field">
-          <label for="title">标题</label>
+          <label for="title">標題</label>
           <input type="text" id="title" name="title" value="<%= article.title %>">
         </div>
         <div class="field">
-          <label for="content">内容</label>
+          <label for="content">內容</label>
           <textarea rows="15" id="content" name="content" class="markdown-edit"><%= article.content %></textarea>
         </div>
       </div>
@@ -27,13 +27,13 @@
         <div class="ui <% if (article.is_notice) { %>checked <% } %>checkbox" style="margin-top: 15px; ">
           <input <% if (article.is_notice) { %>checked=""<% } %> name="is_notice" type="checkbox">
           <label><strong>公告</strong></label>
-          <p style="margin-top: 5px; ">选择后将显示在首页公告栏。</p>
+          <p style="margin-top: 5px; ">選擇後將顯示在首頁公告欄。 </p>
         </div>
       <% } %>
     </div>
     <div class="ui bottom attached tab segment" data-tab="preview">
       <div class="ui header" id="pv-title"></div>
-      <div id="pv-content" class="font-content"></div>
+      <div id="pv-co​​ntent" class="font-content"></div>
     </div>
     <div style="text-align: center; ">
     <button id="submit_button" type="submit" class="ui labeled submit icon button">
@@ -52,8 +52,8 @@ $(function () {
     }
     $("#preview_tab").click(function () {
       $("#pv-title").text($("#title").val());
-      $("#pv-content").text('Loading...');
-      render($("#pv-content"), $("#content"));
+      $("#pv-co​​ntent").text('Loading...');
+      render($("#pv-co​​ntent"), $("#content"));
     });
     $('.tabular.menu .item').tab();
 })

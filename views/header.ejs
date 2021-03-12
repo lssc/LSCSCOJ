@@ -80,10 +80,10 @@
                     <div class="ui basic modal" id="modal-restart">
                       <div class="ui icon header">
                         <i class="redo icon"></i>
-                        <p style="margin-top: 15px; ">重启服务</p>
+                        <p style="margin-top: 15px; ">重啟服務</p>
                       </div>
                       <div class="content" style="text-align: center; ">
-                        <p>确认重新启动 SYZOJ Web 服务吗？</p>
+                        <p>確認重新啟動 SYZOJ Web 服務嗎？</p>
                       </div>
                       <div class="actions">
                         <div class="ui red basic cancel inverted button">
@@ -105,10 +105,10 @@
                 <% } else { %>
                 <div class="item">
                     <a class="ui button" style="margin-right: 0.5em; " href="<%= syzoj.utils.makeUrl(['login'], { url: req.query['url'] || req.originalUrl }) %>">
-                        登录
+                        登錄
                     </a>
                     <a class="ui primary button" href="<%= syzoj.utils.makeUrl(['sign_up'], { url: req.query['url'] || req.originalUrl }) %>">
-                        注册
+                        註冊
                     </a>
                 </div>
                 <% } %>

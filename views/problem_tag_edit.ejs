@@ -1,17 +1,17 @@
-<% this.title = '编辑标签' %>
+<% this.title = '編輯標籤' %>
 <% include header %>
 <div class="padding">
   <form class="ui form" action="<%= syzoj.utils.makeUrl(['problems', 'tag', tag.id, 'edit']) %>" method="post">
       <div class="field">
-          <label>标签名称</label>
+          <label>標籤名稱</label>
           <input type="text" name="name" value="<%= tag.name %>">
       </div>
       <div class="field">
-          <label>标签颜色</label>
+          <label>標籤顏色</label>
           <div class="ui fluid selection dropdown" id="tag_color">
             <input type="hidden" name="color" value="<%= tag.color %>">
             <i class="dropdown icon"></i>
-            <div class="default text">选择颜色</div>
+            <div class="default text">選擇顏色</div>
             <div class="menu">
               <div class="item" data-value="red">
                 <div class="ui red empty circular label"></div>

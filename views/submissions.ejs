@@ -1,11 +1,11 @@
-<% this.title = '提交记录' %>
+<% this.title = '提交記錄' %>
 <% include header %>
 <% include util %>
 <script src="<%- lib('textfit/2.3.1/textFit.min.js') %>"></script>
 <div class="padding">
   <% if (displayConfig.inContest) { %>
     <div class="ui large info message">
-      <div class="ui header">比赛 - <%= contest.title %></div>
+      <div class="ui header">比賽 - <%= contest.title %></div>
       <% if (displayConfig.showOthers) { %>
         <p>您可以看到其他人的提交。
       <% } else { %>
@@ -17,19 +17,19 @@
   <form action="<%= syzoj.utils.makeUrl(displayConfig.inContest ? ['contest', contest.id, 'submissions'] : ['submissions']) %>" class="ui mini form" method="get" role="form" id="form">
     <input type="hidden" name="contest" value="<%= form.contest %>" />
     <div class="inline fields" style="margin-bottom: 25px; white-space: nowrap; ">
-      <label style="font-size: 1.2em; margin-right: 1px; ">题目：</label>
+      <label style="font-size: 1.2em; margin-right: 1px; ">題目：</label>
       <div class="field"><input name="problem_id" style="width: 50px; " type="text" value="<%= form.problem_id %>"></div>
       <% if (displayConfig.showOthers) { %>
         <label style="font-size: 1.2em; margin-right: 1px; ">提交者：</label>
         <div class="field"><input name="submitter" style="width: 100px; " type="text" value="<%= form.submitter %>"></div>
       <% } %>
       <% if (displayConfig.showScore) { %>
-        <label style="font-size: 1.2em; margin-right: 1px; ">分数：</label>
+        <label style="font-size: 1.2em; margin-right: 1px; ">分數：</label>
         <div class="field" style="padding-right: 6px; "><input name="min_score" style="width: 45px; " type="text" value="<%= form.min_score || 0 %>"></div>
         <label style="font-size: 1.2em; margin-right: 7px; ">～</label>
         <div class="field"><input name="max_score" style="width: 45px; " type="text" value="<%= form.max_score || 100 %>"></div>
       <% } %>
-      <label style="font-size: 1.2em; margin-right: 1px; ">语言：</label>
+      <label style="font-size: 1.2em; margin-right: 1px; ">語言：</label>
       <div class="field">
         <div class="ui fluid selection dropdown" id="select_language" style="width: 110px; ">
           <input type="hidden" name="language" value="<%= form.language %>">
@@ -46,7 +46,7 @@
         </div>
       </div>
       <% if (displayConfig.showResult) { %>
-        <label style="font-size: 1.2em; margin-right: 1px; ">状态：</label>
+        <label style="font-size: 1.2em; margin-right: 1px; ">狀態：</label>
         <div class="field">
           <div class="ui fluid selection dropdown" id="select_status" style="width: 210px; ">
             <input type="hidden" name="status" value="<%= form.status %>">
@@ -64,7 +64,7 @@
       <% } %>
       <button class="ui labeled icon mini button" type="submit">
         <i class="search icon"></i>
-        查询
+        查詢
       </button>
       <% if (user && displayConfig.showOthers) { %>
       <a class="ui mini labeled icon blue button" style="margin-left: auto; " id="my_submit">
@@ -85,15 +85,15 @@
   <table id="vueAppFuckSafari" class="ui very basic center aligned table" style="white-space: nowrap; " id="table">
     <thead>
       <tr>
-        <th>编号</th>
-        <th>题目</th>
-        <th>状态</th>
-        <th v-if="displayConfig.showScore">分数</th>
-        <th v-if="displayConfig.showUsage">总时间</th>
-        <th v-if="displayConfig.showUsage">内存</th>
-        <th v-if="displayConfig.showCode">代码 / 答案文件</th>
+        <th>編號</th>
+        <th>題目</th>
+        <th>狀態</th>
+        <th v-if="displayConfig.showScore">分數</th>
+        <th v-if="displayConfig.showUsage">總時間</th>
+        <th v-if="displayConfig.showUsage">內存</th>
+        <th v-if="displayConfig.showCode">代碼 / 答案文件</th>
         <th>提交者</th>
-        <th>提交时间</th>
+        <th>提交時間</th>
       </tr>
     </thead>
     <tbody>
@@ -107,10 +107,10 @@
     <div class="ui icon header">
       <% if (isFiltered) { %>
       <i class="ui search icon" style="margin-bottom: 20px; "></i>
-      找不到符合条件的提交
+      找不到符合條件的提交
       <% } else { %>
       <i class="ui file icon" style="margin-bottom: 20px; "></i>
-      暂无提交
+      暫無提交
       <% } %>
     </div>
   </div>

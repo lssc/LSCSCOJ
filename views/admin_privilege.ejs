@@ -1,9 +1,9 @@
 <%
 this.adminPage = 'privilege';
 let privileges = {
-  manage_problem: '管理题目',
-  manage_problem_tag: '管理题目标签',
-  manage_user: '管理用户',
+  manage_problem: '管理題目',
+  manage_problem_tag: '管理題目標籤',
+  manage_user: '管理用戶',
 };
 %>
 <% include admin_header %>
@@ -11,7 +11,7 @@ let privileges = {
 <thead>
   <tr>
     <th>ID</th>
-    <th>用户名</th>
+    <th>用戶名</th>
     <% for (let privilege in privileges) { %>
       <th width="20%"><%= privileges[privilege] %></th>
     <% } %>

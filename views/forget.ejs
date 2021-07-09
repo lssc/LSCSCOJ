@@ -1,4 +1,4 @@
-<% this.title = '忘记密码' %>
+<% this.title = '忘記密碼' %>
 <% include header %>
 <div class="ui message" id="msgBox" hidden>
     <p id="msgContent"></p>
@@ -8,7 +8,7 @@
     <div class="column" style="max-width: 450px">
       <h2 class="ui image header">
         <div class="content">
-          忘记密码
+          忘記密碼
         </div>
       </h2>
       <form class="ui large form" id="forgetForm">
@@ -16,10 +16,10 @@
           <div class="field">
             <div class="ui left icon input">
               <i class="at icon"></i>
-              <input name="email" placeholder="电子邮件地址" type="text" id="email">
+              <input name="email" placeholder="電子郵件地址" type="text" id="email">
             </div>
           </div>
-          <button type="submit" class="ui fluid large submit button" id="sendEmail">找回密码</div>
+          <button type="submit" class="ui fluid large submit button" id="sendEmail">找回密碼</div>
         </div>
       </form>
     </div>
@@ -44,13 +44,13 @@ function submitForm() {
             error_code = data.error_code;
             switch (error_code) {
                 case 1:
-                    showMessage("positive", "找回密码邮件已经发至你电子邮箱的垃圾邮件文件夹。");
+                    showMessage("positive", "找回密碼郵件已經發至你電子郵箱的垃圾郵件文件夾。");
                     break;
                 case 1001:
-                    showMessage("error", "用户不存在");
+                    showMessage("error", "用戶不存在");
                     break;
                 default:
-                    showMessage("error", "未知错误" + error_code);
+                    showMessage("error", "未知錯誤" + error_code);
                     break;
             }
             $("#sendEmail").removeClass("loading");

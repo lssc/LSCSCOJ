@@ -1,20 +1,20 @@
-<% this.title = '导入题目'; %>
+<% this.title = '導入題目'; %>
 <% include header %>
 <div class="padding">
   <div style="margin-bottom: 30px; ">
-    <h1 style="margin-bottom: 10px; ">导入题目</h1>
-    从另一个运行 SYZOJ 的网站导入题目。
+    <h1 style="margin-bottom: 10px; ">導入題目</h1>
+    從另一個運行 SYZOJ 的網站導入題目。
   </div>
 
   <form class="ui form" action="<%= syzoj.utils.makeUrl(['problem', problem.id, 'import']) %>" method="post">
       <% if (problem.allowedManage) { %>
           <div class="field">
-              <label>题目编号</label>
-              <input type="text" name="id" value="<%= problem.id ? problem.id : '' %>" placeholder="留空则自动延伸" <%= problem.new ? '' : 'disabled' %>>
+              <label>題目編號</label>
+              <input type="text" name="id" value="<%= problem.id ? problem.id : '' %>" placeholder="留空則自動延伸" <%= problem.new ? '' : 'disabled' %>>
           </div>
       <% } %>
       <div class="field">
-          <label>题目链接</label>
+          <label>題目鏈接</label>
           <input type="text" name="url" placeholder="如：http://example.com/problem/1">
       </div>
       <div style="text-align: center; ">

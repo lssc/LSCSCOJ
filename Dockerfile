@@ -18,6 +18,4 @@ ENV NODE_ENV=production \
     SYZOJ_WEB_LISTEN_HOSTNAME=0.0.0.0 \
     SYZOJ_WEB_LISTEN_PORT=80
 
-VOLUME ["/app/config", "/app/uploads", "/app/sessions"]
-
 CMD ["app.js", "-c", "config/web.json"]

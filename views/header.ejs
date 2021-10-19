@@ -58,15 +58,15 @@
             <% } else { %>
             <a class="header item" href="/"><span style="font-family: 'Exo 2'; font-size: 1.5em; font-weight: 600; "><%= syzoj.config.title %></span></a>
             <% } %>
-            <a class="item<% if (active === '') { %> active<% } %>" href="/"><i class="home icon"></i> 首页</a>
-            <a class="item<% if (active.startsWith('problem')) { %> active<% } %>" href="/problems"><i class="list icon"></i> 题库</a>
-            <a class="item<% if (active.startsWith('contest')) { %> active<% } %>" href="/contests"><i class="calendar icon"></i> 比赛</a>
-            <a class="item<% if (active.startsWith('submission')) { %> active<% } %>" href="/submissions"><i class="tasks icon"></i> 评测</a>
+            <a class="item<% if (active === '') { %> active<% } %>" href="/"><i class="home icon"></i> 首頁</a>
+            <a class="item<% if (active.startsWith('problem')) { %> active<% } %>" href="/problems"><i class="list icon"></i> 題庫</a>
+            <a class="item<% if (active.startsWith('contest')) { %> active<% } %>" href="/contests"><i class="calendar icon"></i> 比賽</a>
+            <a class="item<% if (active.startsWith('submission')) { %> active<% } %>" href="/submissions"><i class="tasks icon"></i> 評測</a>
             <a class="item<% if (active.startsWith('ranklist')) { %> active<% } %>" href="/ranklist"><i class="signal icon"></i> 排名</a>
-            <a class="item<% if (active.startsWith('discussion') || active.startsWith('article')) { %> active<% } %>" href="/discussion/global"><i class="comments icon"></i> 讨论</a>
-            <a class="item<% if (active.startsWith('help')) { %> active<% } %>" href="/help"><i class="help circle icon"></i> 帮助</a>
+            <a class="item<% if (active.startsWith('discussion') || active.startsWith('article')) { %> active<% } %>" href="/discussion/global"><i class="comments icon"></i> 討論</a>
+            <a class="item<% if (active.startsWith('help')) { %> active<% } %>" href="/help"><i class="help circle icon"></i> 幫助</a>
             <% if (typeof contest !== 'undefined' && contest && contest.id) { %>
-              <a id="back_to_contest" class="item" href="<%= syzoj.utils.makeUrl(['contest', contest.id]) %>"><i class="arrow left icon"></i> 返回比赛</a>
+              <a id="back_to_contest" class="item" href="<%= syzoj.utils.makeUrl(['contest', contest.id]) %>"><i class="arrow left icon"></i> 返回比賽</a>
             <% } %>
             <div class="right menu">
               <% if (user) { %>
@@ -74,16 +74,16 @@
               <div class="ui simple dropdown item">
                 <%= user.username %><% if (user.nameplate) { %><%- user.nameplate %><% } %> <i class="dropdown icon"></i>
                 <div class="menu">
-                  <a class="item" href="<%= syzoj.utils.makeUrl(['user', user.id, 'edit']) %>"><i class="edit icon"></i>修改资料</a>
+                  <a class="item" href="<%= syzoj.utils.makeUrl(['user', user.id, 'edit']) %>"><i class="edit icon"></i>修改資料</a>
                   <% if (user.is_admin) { %>
-                    <a class="item" href="<%= syzoj.utils.makeUrl(['admin', 'info']) %>"><i class="settings icon"></i>后台管理</a>
+                    <a class="item" href="<%= syzoj.utils.makeUrl(['admin', 'info']) %>"><i class="settings icon"></i>後台管理</a>
                     <div class="ui basic modal" id="modal-restart">
                       <div class="ui icon header">
                         <i class="redo icon"></i>
                         <p style="margin-top: 15px; ">重啟服務</p>
                       </div>
                       <div class="content" style="text-align: center; ">
-                        <p>確認重新啟動 SYZOJ Web 服務嗎？</p>
+                        <p>確認重新啟動 LSCSCOJ Web 服務嗎？</p>
                       </div>
                       <div class="actions">
                         <div class="ui red basic cancel inverted button">
@@ -96,16 +96,16 @@
                         </a>
                       </div>
                     </div>
-                    <a class="item" href="#" onclick="$('#modal-restart').modal('show')"><i class="redo icon"></i>重启服务</a>
+                    <a class="item" href="#" onclick="$('#modal-restart').modal('show')"><i class="redo icon"></i>重啟服務</a>
                   <% } %>
-                  <a class="item" href-post="<%= syzoj.utils.makeUrl(['logout'], { url: req.originalUrl }) %>"><i class="power icon"></i>注销</a>
+                  <a class="item" href-post="<%= syzoj.utils.makeUrl(['logout'], { url: req.originalUrl }) %>"><i class="power icon"></i>登出</a>
                 </div>
               </div>
               </a>
                 <% } else { %>
                 <div class="item">
                     <a class="ui button" style="margin-right: 0.5em; " href="<%= syzoj.utils.makeUrl(['login'], { url: req.query['url'] || req.originalUrl }) %>">
-                        登錄
+                        登入
                     </a>
                     <a class="ui primary button" href="<%= syzoj.utils.makeUrl(['sign_up'], { url: req.query['url'] || req.originalUrl }) %>">
                         註冊
